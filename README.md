@@ -25,5 +25,5 @@
      docker run --name cas3 -e CASSANDRA_SEEDS="$(docker inspect --format='' cas1)" -e CASSANDRA_CLUSTER_NAME=MyCluster -e CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch -e CASSANDRA_DC=datacenter2 -d cassandra
      ```     
   
-  - 
+  - Reference : https://blog.toadworld.com/2018/02/13/build-a-cassandra-cluster-on-docker 
  
