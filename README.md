@@ -9,6 +9,7 @@
      docker run --name cas1 -p 9042:9042 -e CASSANDRA_CLUSTER_NAME=MyCluster -e CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch -e CASSANDRA_DC=datacenter1 -d cassandra
      ```
   d. Run the second and third containers cas2 (datacenter1) and cas3 (datacenter2) with the same clustername MyCluster. 
+     
      ```
      docker run --name cas2 -e CASSANDRA_SEEDS="$(docker inspect --format='' cas1)" -e CASSANDRA_CLUSTER_NAME=MyCluster -e CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch -e CASSANDRA_DC=datacenter1 -d cassandra
      ```
@@ -16,4 +17,6 @@
      ```
      docker run --name cas3 -e CASSANDRA_SEEDS="$(docker inspect --format='' cas1)" -e CASSANDRA_CLUSTER_NAME=MyCluster -e CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch -e CASSANDRA_DC=datacenter2 -d cassandra
      ```     
-  e. E 
+  
+  e. 
+  E 
