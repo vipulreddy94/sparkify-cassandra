@@ -11,6 +11,6 @@
      
      docker run --name cas2 -e CASSANDRA_SEEDS="$(docker inspect --format='' cas1)" -e CASSANDRA_CLUSTER_NAME=MyCluster -e CASSANDRA_ENDPOINT_SNITCH=GossipingProper      tyFileSnitch -e CASSANDRA_DC=datacenter1 -d cassandra
      
-     docker run --name cas3 -e CASSANDRA_SEEDS="$(docker inspect --format='' cas1)" -e CASSANDRA_CLUSTER_NAME=MyCluster -e CASSANDRA_ENDPOINT_SNITCH=GossipingProper      tyFileSnitch -e CASSANDRA_DC=datacenter2 -d cassandra
+     docker run --name cas3 -e CASSANDRA_SEEDS="$(docker inspect --format='' cas1)" -e CASSANDRA_CLUSTER_NAME=MyCluster -e CASSANDRA_ENDPOINT_SNITCH=GossipingProper     tyFileSnitch -e CASSANDRA_DC=datacenter2 -d cassandra
      
   e. 
