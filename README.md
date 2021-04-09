@@ -5,6 +5,9 @@
   - Set memory in Docker Preferences to 5 GB, as each node might take up around 1.5 GB
   - Pull the Cassandra docker image from the docker registry --> docker pull cassandra. 
   - Run the first container (which is the first node cas1). Name of the cluster is MyCluster and GossipingProtocolFileSnitch is used for communication between          nodes. (-p flag is used to expose ports for networking, and -e flag is used for setting environment variables on the container). 
+
+     container 1
+     
      ```
      docker run --name cas1 -p 9042:9042 -e CASSANDRA_CLUSTER_NAME=MyCluster -e CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch -e CASSANDRA_DC=datacenter1 -d cassandra
      ```
