@@ -1,34 +1,9 @@
 # sparkify-cassandra
- NoSQL Cassandra DB to store data from Sparkify music app
+ - NoSQL Cassandra DB to store data from Sparkify music app. 
+ - Data Modeling is done, based on the queries which are to be used. 
+ - If other queries are needed due to business requirements, new tables should be modelled and created accordingly. 
 
-1. Download cassandra and set up a 3 node cluster spread across 2 data centers (nodes cas1 and cas2 in DC1 while node cas3 in DC2) 
-  - Set memory in Docker Preferences to 5 GB, as each node might take up around 1.5 GB
-  - Pull the Cassandra docker image from the docker registry --> docker pull cassandra. 
-  - Run the first container (which is the first node cas1). Name of the cluster is MyCluster and GossipingProtocolFileSnitch is used for communication between          nodes. (-p flag is used to expose ports for networking, and -e flag is used for setting environment variables on the container). 
-
-     container 1
-     
-     ```
-     docker run --name cas1 -p 9042:9042 -e CASSANDRA_CLUSTER_NAME=MyCluster -e CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch -e CASSANDRA_DC=datacenter1 -d cassandra
-     ```
-  - Run the second and third containers cas2 (datacenter1) and cas3 (datacenter2) with the same clustername MyCluster. 
-     
-     container 2
-     
-     ```
-     docker run --name cas2 -e CASSANDRA_SEEDS="$(docker inspect --format='' cas1)" -e CASSANDRA_CLUSTER_NAME=MyCluster -e CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch -e CASSANDRA_DC=datacenter1 -d cassandra
-     ```
-     
-     container 3
-     
-     ```
-     docker run --name cas3 -e CASSANDRA_SEEDS="$(docker inspect --format='' cas1)" -e CASSANDRA_CLUSTER_NAME=MyCluster -e CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch -e CASSANDRA_DC=datacenter2 -d cassandra
-     ```     
-  
-  - 
- Screen Shot 2021-04-09 at 3.03.01 PM.png![image](https://user-images.githubusercontent.com/47663871/114228684-d082f000-9944-11eb-9a65-619641faea48.png)
-
-
-
-  - Reference : https://blog.toadworld.com/2018/02/13/build-a-cassandra-cluster-on-docker 
+1. The python notebook, cassandra-python.ipynb is used to traverse through all the event logs in event_data folder, and create a single new csv file consisting of all the data from all the files.
+2. Cassandra DB is connected through the cassandra python driver "cassandra". With the help of this driver, we connect to the cassandra DB on python and create keyspace and tables, and perform insertions and selects. 
+3. Based on the given queries, 3 different tabels are modeled to satisfy the business requirements. 
  
